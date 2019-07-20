@@ -21,8 +21,7 @@ class SmurfForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
-        console.log(this.state.smurf)
+        this.props.createSmurf(this.state.smurf)
     }
 
     render(){
@@ -40,6 +39,15 @@ class SmurfForm extends React.Component {
 
 }
 
+const mapStateToProps = (state) => {
+    return {
+        smurfs: state.smurfs
+    }
+}
+
+const mapDispatchToProps = {
+    createSmurf
+}
 
 
-export default SmurfForm
+export default connect(mapStateToProps, mapDispatchToProps)(SmurfForm)
